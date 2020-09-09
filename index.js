@@ -1,10 +1,28 @@
 d3.tsv("data/prosopData.tsv").then(function(data_csv) {
     var search = d3.select("#search_btn")
     var checker = (arr, target) => target.every(v => arr.includes(v));
-
+    function zFill(num, size) {
+        var s = num+"";
+        while (s.length < size) s = "0" + s;
+        return s;
+    }
     search
         .on("click", function (d) {
             let search_term = d3.select("#search_input").property("value");
+            var new_id_label = d3.select("#new_id");
+            new_id_label.text("");
+            var current_date = new Date();
+            let new_id = current_date.getFullYear().toString().substr(-2) +
+                zFill(current_date.getMonth(), 2) +
+                zFill(current_date.getDate(),2) +
+                zFill(current_date.getHours(), 2) +
+                zFill(current_date.getMinutes(), 2) +
+                zFill(current_date.getSeconds(), 2)
+
+            new_id_label.
+            text(function() {
+                return "new ID: " + new_id;
+            })
             if (search_term !== "") {
                 var filtered_data = filter_data(search_term);
                 var res_container = d3.select("#search_results_div");
@@ -24,9 +42,8 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
                     })
                     .attr("target","_blank")
                     .text( function() {
-                        return "open";
+                        return " —> اعرض المزيد";
                     });
-                    alert(getDate())
             }
 
         });
