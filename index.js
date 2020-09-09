@@ -32,10 +32,18 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
                     .selectAll("li")
                     .data(filtered_data)
                     .enter()
-                    .append("li")
+                var new_li = new_ul.append("li")
+                    .append("p")
+                new_li.append("p")
                     .text(function (d) {
-                        return d.ID + " - " + d.NAME;
+                        return d.ID;
                     })
+                    .attr("class", "ID")
+                new_li.append("p")
+                    .text(function (d) {
+                        return " - " + d.NAME;
+                    })
+                    .style("display", "inline")
                     .append("a")
                     .attr('href',function (d) {
                         return "data/0902Sakhawi.DawLamic/" + d.ID + ".html";

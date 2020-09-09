@@ -34,6 +34,27 @@
     font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
     font-size: 28px;
 }
+.english{
+    font-family: 'Brill', 'Gentium', 'Baskerville';
+    font-size: 18px;
+    line-height: 1;
+    margin: 36px 0;
+    background-color: #DDD;
+    margin-right: 15%;
+    margin-left:  15%;
+}
+
+.ID{
+    font-family: 'Courier New';
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1;
+    margin: 36px 0;
+    background-color: #DDD;
+    display: inline;
+    /*margin-right: 15%;*/
+    /*margin-left:  15%;*/
+}
 
 .arabic{
   font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
@@ -73,7 +94,7 @@ a {
 }
 
 p{
-  text-indent: 36px;
+  /*text-indent: 36px;*/
 }
 
 .URI {
