@@ -53,8 +53,9 @@
     margin: 36px 0;
     background-color: #DDD;
     color: #b30000;
-    margin-right: 15%;
-    margin-left:  15%;
+    display: inline;
+    /*margin-right: 15%;*/
+    /*margin-left:  15%;*/
 }
 
 .arabic{
