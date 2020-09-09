@@ -8,7 +8,7 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
     }
     search
         .on("click", function (d) {
-            let search_term = d3.select("#search_input").property("value");
+            var search_term = d3.select("#search_input").property("value");
             var new_id_label = d3.select("#new_id");
             new_id_label.text("");
             var current_date = new Date();
@@ -32,10 +32,30 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
                     .selectAll("li")
                     .data(filtered_data)
                     .enter()
-                    .append("li")
+                var new_li = new_ul.append("li")
+                new_li.append("p")
                     .text(function (d) {
-                        return d.ID + " - " + d.NAME;
+                        return d.ID;
                     })
+                    .attr("class", "ID")
+                new_li.append("p")
+                    .html(function (d) {
+                        var name_toks = d.NAME.split(" ");
+                        var search_toks = search_term.split(" ");
+                        var html_str = "";
+                        name_toks.forEach(function(tok) {
+                            if (search_toks.indexOf(tok) !== -1) {
+                                html_str = html_str +
+                                    "<p style='background-color: #4CAF50; display: inline'> " + tok +
+                                    " </p>";
+                            }
+                            else {
+                                html_str = html_str + " " + tok;
+                            }
+                        })
+                        return " - " + html_str;
+                    })
+                    .style("display", "inline")
                     .append("a")
                     .attr('href',function (d) {
                         return "data/0902Sakhawi.DawLamic/" + d.ID + ".html";
