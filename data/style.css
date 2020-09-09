@@ -73,7 +73,9 @@ a {
 }
 
 p{
-  text-indent: 36px;
+  text-indent: 0px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .URI {

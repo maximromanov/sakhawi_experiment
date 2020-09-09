@@ -2,7 +2,7 @@ import re
 
 textPath = "/Users/romanovienna/_OpenITI/0925AH/data/0902Sakhawi/0902Sakhawi.DawLamic/0902Sakhawi.DawLamic.JK003608-ara1.mARkdownSimple"
 uriBase  = "0902Sakhawi.DawLamic.JK003608-ara1"
-reference = "al-Saḫāwī's <i>al-Ḍawʾ al-Lāmiʾ lī-Ahl al-Qarn al-Tāsiʿ</i>"
+reference = "<i>al-Ḍawʾ al-Lāmiʾ lī-Ahl al-Qarn al-Tāsiʿ</i>"
 
 
 with open("template.html", "r") as f1:
