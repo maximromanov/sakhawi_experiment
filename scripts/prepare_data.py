@@ -48,6 +48,7 @@ def generateData(textPath):
                 final = final.replace("MAINHTMLTEXT", textFormatted)
 
                 name = text.replace("$", "").replace("\n", " ").replace("  ", " ").strip()
+                name = name.split(".")[0]
                 name = re.sub("[A-Za-z0-9]+", "", name).replace("  ", " ")
                 if len(name) > lenName:
                     name = name[:lenName] + "..."
@@ -59,7 +60,7 @@ def generateData(textPath):
                 with open(bioPath+ID+".html", "w") as f9:
                     f9.write(final)
 
-        with open("../data/prosopData.csv", "w") as f9:
+        with open("../data/prosopData.tsv", "w") as f9:
             f9.write("ID\tNAME\n"+ "\n".join(prosop))
 
 generateData(textPath)
