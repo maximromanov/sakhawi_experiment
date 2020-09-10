@@ -32,10 +32,10 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
                 search_container.select("#res_cnt").remove();
                 // add result count
                 search_container
-                    .append("p")
+                    .append("h2")
                     .attr("id", "res_cnt")
                     .text(function(e) {
-                        return "showing " + filtered_data.length.toString() + " results"
+                        return "Matches: " + filtered_data.length.toString() + " result(s)"
                     })
                 // add results list
                 var new_ul = res_container
