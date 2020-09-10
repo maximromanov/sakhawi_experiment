@@ -40,14 +40,14 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
                     .attr("class", "ID")
                 new_li.append("p")
                     .html(function (d) {
-                        var name_toks = d.NAME.split(" ");
-                        var search_toks = search_term.split(" ");
+                        var name_toks = d.NAME.trim().split(" ");
+                        var search_toks_norm = normalize_ar(search_term.trim()).split(" ");
                         var html_str = "";
                         name_toks.forEach(function(tok) {
-                            if (search_toks.indexOf(tok) !== -1) {
+                            if (search_toks_norm.indexOf(normalize_ar(tok)) !== -1) {
                                 html_str = html_str +
-                                    " <p style='background-color: #4CAF50; color: white; display: inline'> " + tok +
-                                    " </p> ";
+                                    " <p style='background-color: #4CAF50; color: white; display: inline'>" + tok +
+                                    "</p>";
                             }
                             else {
                                 html_str = html_str + " " + tok;
@@ -72,7 +72,23 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
         let term_toks = term.split(" ");
         return data_csv.filter(
             function(row) {
-                return checker(row['NAME'], term_toks);
+                let norm_row = normalize_ar(row['NAME']);
+                return checker(norm_row,
+                    term_toks.map(function(t) {return normalize_ar(t);}));
             });
+    }
+    function normalize_ar(str) {
+        let repl = {
+            "[إأٱآا]" : "ا",
+            "[يى]ء": "ئ",
+            "ي": "ى",
+            "(ؤ)": "ء",
+            "(ئ)": "ء"
+        }
+        for (let key in repl) {
+            let reg_pat = new RegExp(key, 'g')
+            str = str.replace(reg_pat, repl[key]);
+        }
+        return str;
     }
 });
