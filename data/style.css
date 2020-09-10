@@ -58,6 +58,19 @@
     /*margin-left:  15%;*/
 }
 
+
+
+.URI {
+    font-size: 22px;
+    font-weight: normal;
+    font-family: "Courier New", 'Amiri', 'Lateef', 'Geeza Pro', serif;
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+    color: #b30000;
+    text-align: center;
+}
+
 .arabic{
     font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
     font-size: 28px;
@@ -65,21 +78,50 @@
     margin: 36px 0;
     direction: rtl;
     background-color: white;
+    color: black;
     margin-right: 5%;
     margin-left:  5%;
 }
 
-.poetry {
-    font-size: 22px;
-    font-weight: normal;
+.arPoetry {
+    font-size: 28px;
+    font-weight: 800;
     font-family: "Courier New", 'Amiri', 'Lateef', 'Geeza Pro', serif;
-    padding: 0;
-    margin: 0;
+    line-height: 1;
+    padding: 0px;
+    margin-top: 0;
     text-indent: 0;
     direction: rtl;
-    text-align: center;
+    /*display: inline-block;*/
     color: #b30000;
+    text-align: justify;
+    text-align-last: justify;
+    -moz-text-align-last: justify;
+    -webkit-text-align-last: justify;
+    margin-right: 5%;
+    margin-left:  5%;
 }
+
+table.poetryTable  {
+  font-size: 28px;
+  font-weight: 400;
+  font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
+  /*font-family: "Courier New", 'Amiri', 'Lateef', 'Geeza Pro', serif;*/
+  color: #b30000;
+  direction: rtl;
+  margin: auto;
+  width: auto;
+}
+
+table.poetryTable td {
+  padding-left: 3ex;
+  padding-right: 3ex;
+  text-align: justify;
+  text-align-last: justify;
+  -moz-text-align-last: justify;
+  -webkit-text-align-last: justify;
+}
+
 
 .maintext{
     margin-top: 0%;
@@ -100,13 +142,17 @@
 a {
     text-decoration: none;
     font-weight: bold;
-    color: darkblue;
+    color: #b30000;
 }
 
 p{
     text-indent: 0px;
     text-align: justify;
     text-justify: inter-word;
+}
+
+li{
+  margin-top: 25px;
 }
 
 .URI {
