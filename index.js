@@ -26,7 +26,18 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
             if (search_term !== "") {
                 var filtered_data = filter_data(search_term);
                 var res_container = d3.select("#search_results_div");
+                var search_container = d3.select("#search_div");
+                // remove tags to be updated
                 res_container.selectAll("*").remove();
+                search_container.select("#res_cnt").remove();
+                // add result count
+                search_container
+                    .append("p")
+                    .attr("id", "res_cnt")
+                    .text(function(e) {
+                        return "showing " + filtered_data.length.toString() + " results"
+                    })
+                // add results list
                 var new_ul = res_container
                     .append('ul')
                     .selectAll("li")
