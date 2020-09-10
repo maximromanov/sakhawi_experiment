@@ -13,14 +13,37 @@ bioPath = "../data/0902Sakhawi.DawLamic/"
 stylePath = "../style.css"
 lenName = 120
 
+poetryTemplate2 = '<table class="poetryTable"><tr><td>%s</td><td>%s</td></tr></table>'
+poetryTemplate1 = '<table class="poetryTable"><tr><td>%s</td></tr></table>'
+
 def processText(text):
     # clean
-    text = re.sub("ms\d+|\$", "", text)
+    text = re.sub("ms\d+|\$|Page\w+", "", text)
+    text = re.sub(r"(\w)\n(\w)", r"\1 \2", text)
+
+    textL = text.split("\n")
+    text = []
+    for t in textL: 
+        if "%~%" in t: # poetry
+            t = re.sub("^%~%|%~%$", "", t.strip())
+            ta = t.split("%~%")
+            if len(ta) == 2:
+                t = poetryTemplate2 % (ta[0], ta[1])
+            elif len(ta) == 1:
+                t = poetryTemplate1 % (ta[0])
+            else:
+                #print(ta)
+                #input(t)
+                t = poetryTemplate1 % (t)
+            text.append(t)
+        else: # regular paragraph
+            t = '<p class="arabic prose">%s</p>' % t
+            text.append(t)
+    text = "\n\n".join(text)
+    # fix poetry table :: '<table class="poetryTable"><tr><td>%s</td><td>%s</td></tr></table>'
+    text = re.sub('</table>\n\n<table[^>]+>', "", text)
     # page numbers
-    # regular paragraph
-    # poetry
     # headers
-    text = '<p class="arabic prose">%s</p>' % text
     return(text)
 
 

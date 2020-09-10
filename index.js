@@ -46,8 +46,8 @@ d3.tsv("data/prosopData.tsv").then(function(data_csv) {
                         name_toks.forEach(function(tok) {
                             if (search_toks.indexOf(tok) !== -1) {
                                 html_str = html_str +
-                                    "<p style='background-color: #4CAF50; display: inline'> " + tok +
-                                    " </p>";
+                                    " <p style='background-color: #4CAF50; color: white; display: inline'> " + tok +
+                                    " </p> ";
                             }
                             else {
                                 html_str = html_str + " " + tok;
