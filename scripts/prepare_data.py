@@ -11,7 +11,7 @@ with open("template.html", "r") as f1:
 
 bioPath = "../data/0902Sakhawi.DawLamic/"
 stylePath = "../style.css"
-lenName = 150
+lenName = 350
 
 poetryTemplate2 = '<table class="poetryTable"><tr><td>%s</td><td>%s</td></tr></table>'
 poetryTemplate1 = '<table class="poetryTable"><tr><td>%s</td></tr></table>'
